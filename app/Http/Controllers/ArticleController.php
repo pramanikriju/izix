@@ -10,10 +10,18 @@ class ArticleController extends Controller
     public function ViewAll(Request $request)
     {
         //Paginate articles to 15 per page
-        $articles = Article::paginate(15);
+        $articles = Article::simplePaginate(10);
 
         return view('welcome')->with([
-            "articles" => $articles
+            'articles' => $articles
+        ]);
+    }
+
+    public function viewArticle(Article $article)
+    {
+        return view('article')->with([
+            'article' => $article,
+            'comments' => $article->comments()->where('published', true)->get(),
         ]);
     }
 }

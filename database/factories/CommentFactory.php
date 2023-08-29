@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Article;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +21,8 @@ class CommentFactory extends Factory
         return [
             'content' => fake()->sentence(),
             'user_id' =>fake()->boolean() ?  User::pluck('id')->random() : null,
+            'published' =>fake()->boolean(70),
+            'article_id' => Article::pluck('id')->random(),
         ];
     }
 }
