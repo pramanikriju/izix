@@ -11,7 +11,7 @@ class ArticleController extends Controller
     {
         //Paginate articles to 15 per page
         $articles = Article::simplePaginate(10);
-
+        
         return view('welcome')->with([
             'articles' => $articles
         ]);
