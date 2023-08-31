@@ -8,6 +8,21 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="flex justify-center py-8">
+                    <div class="border px-16 py-10 flex flex-col justify-center">
+                        <span class="text-6xl text-blue-500 font-bold mx-auto">
+                            {{$publishedComments->total()}}
+                        </span>
+                        <span class="mx-auto">Published</span>
+                    </div>
+                    <div class="border px-16 py-10 flex flex-col justify-center">
+                        <span class="text-6xl text-blue-500 font-bold mx-auto">
+                            {{$unpublishedComments->total()}}
+                        </span>
+                        <span class="mx-auto">Unpublished</span>
+                    </div>
+
+                </div>
                 <div class="p-6 text-gray-900">
                     <table class="w-full border-spacing-4  border-blue-500 text-sm text-left text-gray-500 ">
                         <caption class="caption-top pb-6 ">
@@ -56,6 +71,7 @@
 
                     </p>
                 </div>
+                <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="p-6 text-gray-900">
                     <table class="w-full border-spacing-4  border-blue-500 text-sm text-left text-gray-500 ">
                         <caption class="caption-top pb-6 ">
