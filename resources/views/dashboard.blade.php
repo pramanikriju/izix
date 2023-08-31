@@ -9,69 +9,102 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <table class="w-full border-spacing-4  border-blue-500 text-sm text-left text-gray-500 ">
+                        <caption class="caption-top pb-6 ">
+                            Table 1: Unpublished comments
+                        </caption>
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Product name
+                                Article name
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Color
+                                Content
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Category
+                                User
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Price
+                                Timestamp
                             </th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
-                            </th>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td class="px-6 py-4">
-                                White
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop PC
-                            </td>
-                            <td class="px-6 py-4">
-                                $1999
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
-                            </th>
-                            <td class="px-6 py-4">
-                                Black
-                            </td>
-                            <td class="px-6 py-4">
-                                Accessories
-                            </td>
-                            <td class="px-6 py-4">
-                                $99
-                            </td>
-                        </tr>
+                        @foreach($unpublishedComments as $comment)
+                            <tr class="bg-white border-b ">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    <a href="{{route('view.article',['article' => $comment->article ])}}" class="hover:underline hover:text-blue-500">
+                                    {{$comment->article->title}}
+                                    </a>
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{$comment->content}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{$comment->user_id ? $comment->user->name : 'Anonymous'}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{$comment->created_at}}
+                                </td>
+                            </tr>
+                        @endforeach
+
                         </tbody>
                     </table>
+                    <p class="my-4">
+                        {{ $unpublishedComments->links() }}
+
+                    </p>
                 </div>
+                <div class="p-6 text-gray-900">
+                    <table class="w-full border-spacing-4  border-blue-500 text-sm text-left text-gray-500 ">
+                        <caption class="caption-top pb-6 ">
+                            Table 2: Published comments
+                        </caption>
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Article name
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Content
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                User
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Timestamp
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($publishedComments as $comment)
+                            <tr class="bg-white border-b ">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    <a href="{{route('view.article',['article' => $comment->article ])}}" class="hover:underline hover:text-blue-500">
+                                        {{$comment->article->title}}
+                                    </a>
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{$comment->content}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{$comment->user_id ? $comment->user->name : 'Anonymous'}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{$comment->created_at}}
+                                </td>
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+                    <p class="my-4">
+                        {{ $publishedComments->links() }}
+
+                    </p>
+                </div>
+
             </div>
         </div>
     </div>
