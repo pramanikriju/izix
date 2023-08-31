@@ -8,25 +8,31 @@ use Livewire\Component;
 
 class CommentBox extends Component
 {
-
+    // Locked article variable using new Livewire v3 feature
     public Article $article;
-
+    // Init array of all comments and empty text string
     public $comments, $text;
-
+    //Current comment being edited
     public $comment;
-    protected $rules = [
-        'comment' => 'required',
-    ];
 
+    /**
+     * Fetch all the published comments for the article
+     */
     public function mount()
     {
         $this->comments = $this->article->comments()->where('published', true)->orderByDesc('updated_at')->get();
     }
+    /**
+     * Permanently store the unpublished article and clear the text field
+     */
     public function delete()
     {
         $this->reset(['text','comment']);
     }
 
+    /**
+     * Save the comment on every 
+     */
     public function updatedText()
     {
         if(empty($this->comment))

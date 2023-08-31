@@ -6,6 +6,11 @@ for visitors to leave a comment.
 up deleting it before publication.
 Track this data.
 
+## Setup 
+1. Clone the git repository
+2. Run ```composer install```
+3. Run ```php artisan migrate --seed```
+
 ## Approach
 Create three models - 
 1. User (Laravel default)
