@@ -31,7 +31,7 @@ class CommentBox extends Component
     }
 
     /**
-     * Save the comment on every 
+     * Save the comment on every text change
      */
     public function updatedText()
     {
@@ -52,7 +52,9 @@ class CommentBox extends Component
         $this->comment->save();
 
     }
-
+    /**
+     * Save the comment and mark it as published to be visible
+     */
     public function save()
     {
         $this->comment->published = true;
