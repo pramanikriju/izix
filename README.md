@@ -41,4 +41,5 @@ The approach to track unpublished comments would be to have a "published" boolea
 ## Possible improvements
 1. Add a Gate/Policy check to ensure only sales team can view the list of comments
 2. Add a schedule task to clean up old unpublished comments
-3. Add more testing 
+3. Using ```wire.model.blur``` to be less intensive on the database
+4. Add more testing 
